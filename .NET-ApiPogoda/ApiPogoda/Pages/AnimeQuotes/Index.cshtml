@@ -1,0 +1,48 @@
+﻿@page
+@model ApiPogoda.Pages.AnimeQuotes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimeQuote[0].Anime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimeQuote[0].Character)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimeQuote[0].Quote)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AnimeQuote) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Character)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quote)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

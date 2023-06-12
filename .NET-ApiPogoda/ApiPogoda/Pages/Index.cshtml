@@ -1,0 +1,25 @@
+﻿@page
+@using Microsoft.Extensions.Primitives;
+@model IndexModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+
+@if (!StringValues.IsNullOrEmpty(Request.Query["q"]))
+{
+    <h2>Nie znaleziono @Request.Query["q"].</h2>
+    <form method="post">
+        <input name="q" value=@Request.Query["q"] type="hidden" />
+        <input type="submit" value="Kocham API" asp-page-handler="Api" />
+    </form>
+}
+else{
+    <h1>Search</h1>
+
+    <form>
+        <input type="search" name="q" placeholder="Search...">
+        <button>Search</button>
+    </form>
+}
